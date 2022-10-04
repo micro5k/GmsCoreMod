@@ -82,10 +82,17 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation project(':fake-signature')
     implementation project(':play-services-auth')
     implementation project(':play-services-base-core')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
 
     implementation "com.squareup.wire:wire-runtime:$wireVersion"
     implementation "com.android.volley:volley:$volleyVersion"
