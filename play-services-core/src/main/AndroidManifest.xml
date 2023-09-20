@@ -479,6 +479,12 @@
             </intent-filter>
         </service>
 
+        <service android:name="org.microg.gms.auth.workaccount.WorkAccountService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.auth.account.workaccount.START" />
+            </intent-filter>
+        </service>
+
         <!-- Games -->
 
         <activity
