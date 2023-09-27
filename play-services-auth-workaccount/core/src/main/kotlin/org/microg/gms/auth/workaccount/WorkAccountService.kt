@@ -35,8 +35,8 @@ class WorkAccountServiceImpl(val context: Context) : IWorkAccountService.Stub() 
         return super.onTransact(code, data, reply, flags)
     }
 
-    override fun addWorkAccount(googleApiClient: IObjectWrapper?, s: String?): IWorkAccountService.AddAccountResult {
-        Log.d(TAG, "addWorkAccount with $googleApiClient, $s")
+    override fun addWorkAccount(googleApiClient: IObjectWrapper?, token: String?): IWorkAccountService.AddAccountResult {
+        Log.d(TAG, "addWorkAccount with $googleApiClient, $token")
         return object : AddAccountResult.Stub() {
             override fun getAccount(): Account? {
                 // TODO
@@ -49,16 +49,20 @@ class WorkAccountServiceImpl(val context: Context) : IWorkAccountService.Stub() 
         }
     }
 
-     override fun removeWorkAccount(googleApiClient: IObjectWrapper?, account: IObjectWrapper?): IObjectWrapper {
+    override fun removeWorkAccount(googleApiClient: IObjectWrapper?, account: IObjectWrapper?): IObjectWrapper {
+        // TODO
+        Log.d(TAG, "removeWorkAccount with $googleApiClient, $account")
         return ObjectWrapper.wrap(null)
     }
 
-     override fun setWorkAuthenticatorEnabled(googleApiClient: IObjectWrapper?, b: Boolean) {
-         // TODO
-         Log.d(TAG, "setWorkAuthenticatorEnabled with $googleApiClient, $b")
+    override fun setWorkAuthenticatorEnabled(googleApiClient: IObjectWrapper?, enabled: Boolean) {
+        // TODO
+        Log.d(TAG, "setWorkAuthenticatorEnabled with $googleApiClient, $enabled")
     }
 
-     override fun setWorkAuthenticatorEnabledWithResult(googleApiClient: IObjectWrapper?, b: Boolean): IObjectWrapper {
+    override fun setWorkAuthenticatorEnabledWithResult(googleApiClient: IObjectWrapper?, enabled: Boolean): IObjectWrapper {
+        // TODO
+        Log.d(TAG, "setWorkAuthenticatorEnabledWithResult with $googleApiClient, $enabled")
         return ObjectWrapper.wrap(null)
     }
 }

@@ -10,12 +10,11 @@ interface IWorkAccountService {
         IObjectWrapper getStatus();
     }
 
-    void setWorkAuthenticatorEnabled(IObjectWrapper googleApiClient, boolean b);
-
-    AddAccountResult addWorkAccount(IObjectWrapper googleApiClient, String s);
+    AddAccountResult addWorkAccount(IObjectWrapper googleApiClient, String token);
 
     IObjectWrapper removeWorkAccount(IObjectWrapper googleApiClient, IObjectWrapper account);
 
+    void setWorkAuthenticatorEnabled(IObjectWrapper googleApiClient, boolean enabled);
 
-    IObjectWrapper setWorkAuthenticatorEnabledWithResult(IObjectWrapper googleApiClient, boolean b);
+    IObjectWrapper setWorkAuthenticatorEnabledWithResult(IObjectWrapper googleApiClient, boolean enabled);
 }

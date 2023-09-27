@@ -15,7 +15,7 @@ dependencies {
 }
 
 android {
-    namespace "com.google.android.gms.auth.workaccount"
+    namespace "org.microg.gms.auth.workaccount.core"
 
     compileSdkVersion androidCompileSdk
     buildToolsVersion "$androidBuildVersionTools"
@@ -43,3 +43,5 @@ android {
         disable 'MissingTranslation'
     }
 }
+
+description = 'microG service implementation for play-services-auth-workaccount'
