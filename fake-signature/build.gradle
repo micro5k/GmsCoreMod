@@ -10,7 +10,7 @@ android {
     compileSdk androidCompileSdk
 
     defaultConfig {
-        minSdk androidMinSdk
+        minSdk 8
         targetSdk androidTargetSdk
     }
 

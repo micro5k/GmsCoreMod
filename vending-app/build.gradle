@@ -13,8 +13,9 @@ android {
     defaultConfig {
         versionName vendingAppVersionName
         versionCode vendingAppVersionCode
-        minSdkVersion androidMinSdk
+        minSdkVersion 8
         targetSdkVersion androidTargetSdk
+        resValue "string", "app_name_legacy", "microG Companion Legacy"
     }
 
     flavorDimensions = ['target']
