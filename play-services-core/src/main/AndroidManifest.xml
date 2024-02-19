@@ -137,7 +137,7 @@
         android:label="@string/gms_app_name"
         android:multiArch="true"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:theme="@style/Theme.AppCompat.DayNight">
+        android:theme="@style/Theme.App">
 
         <library android:name="com.google.android.gms" />
 
@@ -841,6 +841,36 @@
             </intent-filter>
         </service>
 
+        <service android:name="org.microg.gms.pseudonymous.PseudonymousIdService" >
+            <intent-filter>
+                <action android:name="com.google.android.gms.pseudonymous.service.START" />
+            </intent-filter>
+        </service>
+
+        <service android:name="org.microg.gms.gass.GassService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gass.START" />
+            </intent-filter>
+        </service>
+
+        <service android:name="org.microg.gms.auth.account.data.AccountDataService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.auth.account.data.service.START" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".semanticlocation.SemanticLocationService" android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.semanticlocation.service.START_ODLH" />
+            </intent-filter>
+        </service>
+
+        <service android:name="com.google.android.gms.audit.internal.AuditApiService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.audit.service.START" />
+            </intent-filter>
+        </service>
+
         <service android:name="org.microg.gms.DummyService">
             <intent-filter>
                 <action android:name="com.google.android.contextmanager.service.ContextManagerService.START" />
@@ -853,12 +883,10 @@
                 <action android:name="com.google.android.gms.appusage.service.START" />
                 <action android:name="com.google.android.gms.asterism.service.START" />
                 <action android:name="com.google.android.gms.audiomodem.service.AudioModemService.START" />
-                <action android:name="com.google.android.gms.audit.service.START" />
                 <action android:name="com.google.android.gms.auth.account.authapi.START" />
                 <action android:name="com.google.android.gms.auth.account.authenticator.auto.service.START" />
                 <action android:name="com.google.android.gms.auth.account.authenticator.chromeos.START" />
                 <action android:name="com.google.android.gms.auth.account.authenticator.tv.service.START" />
-                <action android:name="com.google.android.gms.auth.account.data.service.START" />
                 <action android:name="com.google.android.gms.auth.api.identity.service.authorization.START" />
                 <action android:name="com.google.android.gms.auth.api.identity.service.credentialsaving.START" />
                 <action android:name="com.google.android.gms.auth.api.phone.service.InternalService.START" />
@@ -905,7 +933,6 @@
                 <action android:name="com.google.android.gms.fitness.SessionsApi" />
                 <action android:name="com.google.android.gms.fonts.service.START" />
                 <action android:name="com.google.android.gms.freighter.service.START" />
-                <action android:name="com.google.android.gms.gass.START" />
                 <action android:name="com.google.android.gms.growth.service.START" />
                 <action android:name="com.google.android.gms.googlehelp.service.GoogleHelpService.START" />
                 <action android:name="com.google.android.gms.herrevad.services.LightweightNetworkQualityAndroidService.START" />
@@ -932,7 +959,6 @@
                 <action android:name="com.google.android.gms.notifications.service.START" />
                 <action android:name="com.google.android.gms.ocr.service.internal.START" />
                 <action android:name="com.google.android.gms.ocr.service.START" />
-                <action android:name="com.google.android.gms.panorama.service.START" />
                 <action android:name="com.google.android.gms.payse.service.BIND" />
                 <action android:name="com.google.android.gms.people.contactssync.service.START" />
                 <action android:name="com.google.android.gms.photos.autobackup.service.START" />
@@ -940,12 +966,10 @@
                 <action android:name="com.google.android.gms.plus.service.image.INTENT" />
                 <action android:name="com.google.android.gms.plus.service.internal.START" />
                 <action android:name="com.google.android.gms.plus.service.START" />
-                <action android:name="com.google.android.gms.pseudonymous.service.START" />
                 <action android:name="com.google.android.gms.rcs.START" />
                 <action android:name="com.google.android.gms.romanesco.MODULE_BACKUP_AGENT" />
                 <action android:name="com.google.android.gms.romanesco.service.START" />
                 <action android:name="com.google.android.gms.search.service.SEARCH_AUTH_START" />
-                <action android:name="com.google.android.gms.semanticlocation.service.START_ODLH" />
                 <action android:name="com.google.android.gms.sesame.service.BIND" />
                 <action android:name="com.google.android.gms.telephonyspam.service.START" />
                 <action android:name="com.google.android.gms.testsupport.service.START" />
