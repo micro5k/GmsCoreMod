@@ -33,7 +33,7 @@ class GmsDeviceComplianceService : BaseService(TAG, GmsService.GMS_COMPLIANCE) {
     }
 }
 
-class GmsDeviceComplianceServiceImpl(override val lifecycle: Lifecycle) : IGmsDeviceComplianceService.Stub(), LifecycleOwner {
+class GmsDeviceComplianceServiceImpl(private val lifecycle: Lifecycle) : IGmsDeviceComplianceService.Stub(), LifecycleOwner {
     override fun getDeviceCompliance(callback: IGmsDeviceComplianceServiceCallback?) {
         Log.d(TAG, "getDeviceCompliance()")
         lifecycleScope.launchWhenStarted {
@@ -44,4 +44,6 @@ class GmsDeviceComplianceServiceImpl(override val lifecycle: Lifecycle) : IGmsDe
             }
         }
     }
+
+    override fun getLifecycle(): Lifecycle = lifecycle
 }

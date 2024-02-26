@@ -58,9 +58,13 @@ class RecaptchaService : BaseService(TAG, GmsService.RECAPTCHA) {
 class RecaptchaServiceImpl(
     private val context: Context,
     private val packageName: String,
-    override val lifecycle: Lifecycle,
+    private val lifecycle: Lifecycle,
     private val impl: RecaptchaImpl
 ) : IRecaptchaService.Stub(), LifecycleOwner {
+
+    override fun getLifecycle(): Lifecycle {
+        return lifecycle
+    }
 
     override fun verifyWithRecaptcha(callback: IExecuteCallback, siteKey: String, packageName: String) {
         Log.d(TAG, "Not yet implemented: verifyWithRecaptcha($siteKey, $packageName)")

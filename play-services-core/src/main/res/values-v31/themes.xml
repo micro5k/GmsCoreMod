@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.App" parent="Theme.Base.DayNight.NoActionBar" />
+    <style name="Theme.App" parent="Theme.Base.DayNight.NoActionBar">
+        <item name="isMaterial3DynamicColorApplied">true</item>
+    </style>
 </resources>

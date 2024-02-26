@@ -50,7 +50,8 @@ class CredentialManagerService : BaseService(TAG, GmsService.CREDENTIAL_MANAGER)
 
 }
 
-private class CredentialManagerServiceImpl(private val context: Context, override val lifecycle: Lifecycle) : ICredentialManagerService.Stub(), LifecycleOwner {
+private class CredentialManagerServiceImpl(private val context: Context, private val lifecycle: Lifecycle) : ICredentialManagerService.Stub(), LifecycleOwner {
+    override fun getLifecycle(): Lifecycle = lifecycle
 
     override fun getCredentialManagerIntent(callback: IPendingIntentCallback?, params: CredentialManagerInvocationParams?) {
         Log.d(TAG, "Not yet implemented: getCredentialManagerIntent $params")

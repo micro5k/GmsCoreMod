@@ -205,7 +205,8 @@ class PushRegisterService : LifecycleService() {
     }
 }
 
-internal class PushRegisterHandler(private val context: Context, private val database: GcmDatabase, override val lifecycle: Lifecycle) : Handler(), LifecycleOwner {
+internal class PushRegisterHandler(private val context: Context, private val database: GcmDatabase, private val lifecycle: Lifecycle) : Handler(), LifecycleOwner {
+    override fun getLifecycle(): Lifecycle = lifecycle
 
     private var callingUid = 0
     override fun sendMessageAtTime(msg: Message, uptimeMillis: Long): Boolean {
@@ -351,7 +352,7 @@ internal class PushRegisterHandler(private val context: Context, private val dat
 class PushRegisterReceiver : WakefulBroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val intent2 = Intent(context, PushRegisterService::class.java)
-        if (intent.extras!!.get("delete") != null) {
+        if (intent.extras!!["delete"] != null) {
             intent2.action = ACTION_C2DM_UNREGISTER
         } else {
             intent2.action = ACTION_C2DM_REGISTER

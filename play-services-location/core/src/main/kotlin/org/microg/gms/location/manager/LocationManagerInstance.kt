@@ -38,7 +38,7 @@ class LocationManagerInstance(
     private val context: Context,
     private val locationManager: LocationManager,
     private val packageName: String,
-    override val lifecycle: Lifecycle
+    private val lifecycle: Lifecycle
 ) :
     AbstractLocationManagerInstance(), LifecycleOwner {
 
@@ -378,6 +378,8 @@ class LocationManagerInstance(
         }
         throw SecurityException("$packageName does not have any of $permissions")
     }
+
+    override fun getLifecycle(): Lifecycle = lifecycle
 
     override fun onTransact(code: Int, data: Parcel, reply: Parcel?, flags: Int): Boolean =
         warnOnTransactionIssues(code, reply, flags, TAG) { super.onTransact(code, data, reply, flags) }

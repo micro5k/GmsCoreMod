@@ -58,8 +58,9 @@ private fun StringBuilder.appendUrlEncodedParam(key: String, value: String?) = a
 class SafetyNetClientServiceImpl(
     private val context: Context,
     private val packageName: String,
-    override val lifecycle: Lifecycle
+    private val lifecycle: Lifecycle
 ) : ISafetyNetService.Stub(), LifecycleOwner {
+    override fun getLifecycle(): Lifecycle = lifecycle
 
     override fun attest(callbacks: ISafetyNetCallbacks, nonce: ByteArray) {
         attestWithApiKey(callbacks, nonce, DEFAULT_API_KEY)
