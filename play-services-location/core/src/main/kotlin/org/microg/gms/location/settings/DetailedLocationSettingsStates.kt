@@ -51,7 +51,7 @@ fun Context.getDetailedLocationSettingsStates(): DetailedLocationSettingsStates 
     val bluetoothLeSystemFeature = packageManager.hasSystemFeature(FEATURE_BLUETOOTH_LE)
     val locationManager = getSystemService<LocationManager>()
     val bluetoothManager = if (bluetoothLeSystemFeature) getSystemService<BluetoothManager>() else null
-    val bleAdapter = bluetoothManager?.adapter
+    val bleAdapter = if (SDK_INT >= 18) bluetoothManager?.adapter else null
 
     return DetailedLocationSettingsStates(
         gpsSystemFeature = packageManager.hasSystemFeature(FEATURE_LOCATION_GPS),
@@ -66,7 +66,7 @@ fun Context.getDetailedLocationSettingsStates(): DetailedLocationSettingsStates 
             packageManager.checkPermission(ACCESS_BACKGROUND_LOCATION, packageName) == PERMISSION_GRANTED,
         blePresent = bleAdapter != null,
         bleEnabled = bleAdapter?.isEnabled == true,
-        bleScanAlways = Settings.Global.getInt(contentResolver, "ble_scan_always_enabled", 0) == 1,
-        airplaneMode = Settings.Global.getInt(contentResolver, Settings.Global.AIRPLANE_MODE_ON, 0) != 0
+        bleScanAlways = if (SDK_INT >= 17) Settings.Global.getInt(contentResolver, "ble_scan_always_enabled", 0) == 1 else false,
+        airplaneMode = if (SDK_INT >= 17) Settings.Global.getInt(contentResolver, Settings.Global.AIRPLANE_MODE_ON, 0) != 0 else Settings.System.getInt(contentResolver, Settings.System.AIRPLANE_MODE_ON, 0) != 0
     )
 }

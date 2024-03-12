@@ -76,7 +76,11 @@ public class AccountContentProvider extends ContentProvider {
                 Account[] accounts = null;
                 if (arg != null && (arg.equals(DEFAULT_ACCOUNT_TYPE) || arg.startsWith(DEFAULT_ACCOUNT_TYPE + "."))) {
                     AccountManager am = AccountManager.get(getContext());
+                    if (SDK_INT >= 18) {
                     accounts = am.getAccountsByTypeForPackage(arg, packageName);
+                    } else {
+                        accounts = am.getAccountsByType(arg);
+                    }
                     if (SDK_INT >= 26 && accounts != null && arg.equals(DEFAULT_ACCOUNT_TYPE)) {
                         for (Account account : accounts) {
                             if (am.getAccountVisibility(account, packageName) == AccountManager.VISIBILITY_UNDEFINED &&
