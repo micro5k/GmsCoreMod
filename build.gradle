@@ -32,7 +32,7 @@ buildscript {
     ext.wireVersion = '4.9.9'
     ext.tinkVersion = '1.13.0'
 
-    ext.androidBuildGradleVersion = '8.4.2'
+    ext.androidBuildGradleVersion = '8.5.2'
 
     ext.androidBuildVersionTools = '35.0.0'
 
